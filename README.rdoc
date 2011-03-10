@@ -1,19 +1,13 @@
 = cucumber_growlnotify
 
-Description goes here.
+This gem notifies through growl that your cucumber tests are passing or not
 
-== Contributing to cucumber_growlnotify
- 
-* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
-* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
-* Fork the project
-* Start a feature/bugfix branch
-* Commit and push until you are happy with your contribution
-* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+== Installing
 
-== Copyright
-
-Copyright (c) 2011 Rodrigo Oliveira. See LICENSE.txt for
-further details.
+1. Install Growl
+2. Install 'growlnotify' in the 'Extras' package in Growl installer
+3. Add gem 'cucumber_growlnotify' to your projects Gemfile
+4. Configure in System Preferences - Growl - Network
+5. Check "Listen for incoming notifications" and "Allow remote application registration"
+6. Run your cucumber tests with --format Cucumber::Formatter::Growl
 
