@@ -11,3 +11,7 @@ This gem notifies through growl that your cucumber tests are passing or not
 5. Check "Listen for incoming notifications" and "Allow remote application registration"
 6. Run your cucumber tests with --format Cucumber::Formatter::Growl
 
+== Notes
+
+This gem was developed using Ruby 1.9.2.
+There's a gem that does the same stuff, with Autotest, but it doesn't work with Ruby 1.9
