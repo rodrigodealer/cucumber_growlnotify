@@ -12,6 +12,11 @@ module Cucumber
       include Gherkin::Formatter::Escaping
       attr_writer :indent
       attr_reader :step_mother
+      
+      IMAGES = {
+        :fail    => File.dirname(__FILE__) + "/../resources/fail.png",
+        :success => File.dirname(__FILE__) + "/../resources/success.png"
+      }
 
       def initialize(step_mother, path_or_io, options)
         @step_mother, @io, @options = step_mother, ensure_io(path_or_io, "pretty"), options
@@ -227,8 +232,8 @@ module Cucumber
         @prefixes[status]
       end
       
-      def growl(title, msg, pri=0, sticky="")
-        system "growlnotify -p 0 -n '#{title}' -m '#{msg}' #{title}"
+      def growl(title, msg, image, pri=0, sticky="")
+        system "growlnotify -p 0 -n '#{title}'  --image #{image} -m '#{msg}' #{title}"
       end
 
       def print_summary(features)
@@ -236,7 +241,11 @@ module Cucumber
         print_snippets(@options)
         print_passing_wip(@options)
         message = @passed.to_s + " steps passed \n" + @failure.to_s + " steps failed"
-        growl('Cucumber', message)
+        image = IMAGES[:success]
+        if (@failure > 0)
+          image = IMAGES[:fail]
+        end
+        growl('Cucumber', message, image)
       end
     end
   end
