@@ -15,8 +15,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "cucumber_growlnotify"
   gem.homepage = "http://github.com/rodrigodealer/cucumber_growlnotify"
   gem.license = "MIT"
-  gem.summary = %Q{This gem notifies throught growl that your cucumber tests are passing or not}
-  gem.description = %Q{This gem notifies throught growl that your cucumber tests are passing or not}
+  gem.summary = %Q{This gem notifies through growl that your cucumber tests are passing or not}
+  gem.description = %Q{This gem notifies through growl that your cucumber tests are passing or not}
   gem.email = "rodrigo.dealer@gmail.com"
   gem.authors = ["Rodrigo Oliveira"]
   gem.add_dependency "cucumber", "0.10.0"

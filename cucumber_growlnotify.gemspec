@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{cucumber_growlnotify}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Rodrigo Oliveira"]
   s.date = %q{2011-03-09}
-  s.description = %q{This gem notifies throught growl that your cucumber tests are passing or not}
+  s.description = %q{This gem notifies through growl that your cucumber tests are passing or not}
   s.email = %q{rodrigo.dealer@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "cucumber_growlnotify.gemspec",
     "lib/cucumber_growlnotify.rb",
     "test/helper.rb",
     "test/test_cucumber_growlnotify.rb"
@@ -32,7 +33,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.6.2}
-  s.summary = %q{This gem notifies throught growl that your cucumber tests are passing or not}
+  s.summary = %q{This gem notifies through growl that your cucumber tests are passing or not}
   s.test_files = [
     "test/helper.rb",
     "test/test_cucumber_growlnotify.rb"
