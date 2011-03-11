@@ -25,6 +25,9 @@ module Cucumber
         @prefixes = options[:prefixes] || {}
         @delayed_announcements = []
         @passed = 0
+        @skipped = 0
+        @pending = 0
+        @undefined = 0
         @failure = 0
         @scenarios = 0
       end
@@ -152,10 +155,17 @@ module Cucumber
         source_indent = nil unless @options[:source]
         name_to_report = format_step(keyword, step_match, status, source_indent)
         @io.puts(name_to_report.indent(@scenario_indent + 2))
-        if status == :passed
-          @passed += 1
-        else
-          @failure += 1
+        case status
+          when :passed
+            @passed += 1
+          when :failed
+            @failure += 1
+          when :skipped
+            @skipped += 1
+          when :undefined
+            @undefined += 1
+          when :pending 
+            @pending += 1  
         end
         print_announcements
       end
@@ -242,11 +252,30 @@ module Cucumber
         print_stats(features, @options.custom_profiles)
         print_snippets(@options)
         print_passing_wip(@options)
-        message = @scenarios.to_s + " scenarios \n" +  @passed.to_s + " steps passed \n" + @failure.to_s + " steps failed"
+        message = @scenarios.to_s + " scenarios \n" 
         image = IMAGES[:success]
-        if (@failure > 0)
+        if @passed > 0
+          message = message + @passed.to_s + " steps passed \n"
+        end
+        
+        if @failure > 0 
+          message = message + @failure.to_s + " steps failed\n"
           image = IMAGES[:fail]
         end
+        
+        if @pending > 0
+          message = message + @pending.to_s + " steps pending\n"
+        end  
+        
+        if @undefined > 0
+          message = message + @undefined.to_s + " steps undefined\n"
+        end
+        
+        if @skipped > 0
+          message = message + @skipped.to_s + " steps skipped\n"
+          image = IMAGES[:fail]
+        end
+        
         growl('Cucumber', message, image)
       end
     end
