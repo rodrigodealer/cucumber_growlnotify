@@ -26,6 +26,7 @@ module Cucumber
         @delayed_announcements = []
         @passed = 0
         @failure = 0
+        @scenarios = 0
       end
 
       def after_features(features)
@@ -71,6 +72,7 @@ module Cucumber
       def before_feature_element(feature_element)
         @indent = 2
         @scenario_indent = 2
+        @scenarios += 1
       end
       
       def after_feature_element(feature_element)
@@ -240,7 +242,7 @@ module Cucumber
         print_stats(features, @options.custom_profiles)
         print_snippets(@options)
         print_passing_wip(@options)
-        message = @passed.to_s + " steps passed \n" + @failure.to_s + " steps failed"
+        message = @scenarios.to_s + " scenarios \n" +  @passed.to_s + " steps passed \n" + @failure.to_s + " steps failed"
         image = IMAGES[:success]
         if (@failure > 0)
           image = IMAGES[:fail]
